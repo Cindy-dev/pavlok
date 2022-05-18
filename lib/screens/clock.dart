@@ -24,29 +24,31 @@ class _ClockState extends State<Clock> {
   String _addZeroes(int value) => value.toString().padLeft(2, "0");
 
   Widget _buildTopTitle(String title, IconData icon, TimeOfDay time) {
-    return Column(
-      children: [
-        Text.rich(
-          TextSpan(children: [
-            WidgetSpan(child: Icon(icon, size: 18, color: mutedTextColor)),
-            TextSpan(
-              text: " $title",
-              style: TextStyle(
-                  fontSize: 18,
-                  color: mutedTextColor,
-                  fontWeight: FontWeight.w500),
-            ),
-          ]),
-        ),
-        const SizedBox(height: 4),
-        Text(
-          "${time.hourOfPeriod == 0 ? 12 : _addZeroes(time.hourOfPeriod)}:${_addZeroes(time.minute)} ${time.periodShort.toUpperCase()}",
-          style: const TextStyle(
-              fontSize: 28,
-              color: Color(0xFFFFFFFF),
-              fontWeight: FontWeight.w600),
-        ),
-      ],
+    return Expanded(
+      child: Column(
+        children: [
+          Text.rich(
+            TextSpan(children: [
+              WidgetSpan(child: Icon(icon, size: 18, color: mutedTextColor)),
+              TextSpan(
+                text: " $title",
+                style: TextStyle(
+                    fontSize: 18,
+                    color: mutedTextColor,
+                    fontWeight: FontWeight.w500),
+              ),
+            ]),
+          ),
+          const SizedBox(height: 4),
+          Text(
+            "${time.hourOfPeriod == 0 ? 12 : _addZeroes(time.hourOfPeriod)}:${_addZeroes(time.minute)} ${time.periodShort.toUpperCase()}",
+            style: const TextStyle(
+                fontSize: 28,
+                color: Color(0xFFFFFFFF),
+                fontWeight: FontWeight.w600),
+          ),
+        ],
+      ),
     );
   }
 
@@ -54,55 +56,58 @@ class _ClockState extends State<Clock> {
   Widget build(BuildContext context) {
     return Scaffold(
       //   backgroundColor: const Color(0xFF2C2C2E),
-      body: 
-      // Padding(
-      //   padding: const EdgeInsets.all(16.0),
-      //  child:
-         Container(
-          alignment: Alignment.center,
-         height: 200/2,
-          margin: EdgeInsets.all(55),
-            child: Column(
-            mainAxisSize: MainAxisSize.min,
+      body:
+          // Padding(
+          //   padding: const EdgeInsets.all(16.0),
+          //  child:
+          Container(
+        alignment: Alignment.center,
+        margin: EdgeInsets.all(55),
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Container(
+              height: 150,
+              child: BedTimeWidget(
+                bedTime: _bedTime,
+                wakeTime: _wakeTime,
+                threshold: threshold,
+                onChange: (TimeOfDay bedTime, TimeOfDay wakeTime) {
+                  setState(() {
+                    _bedTime = bedTime;
+                    _wakeTime = wakeTime;
+                  });
+                },
+              ),
+            ),
+            SizedBox(
+              height: 10,
+            ),
+            Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                BedTimeWidget(
-                  bedTime: _bedTime,
-                  wakeTime: _wakeTime,
-                  threshold: threshold,
-                  onChange: (TimeOfDay bedTime, TimeOfDay wakeTime) {
-                    setState(() {
-                      _bedTime = bedTime;
-                      _wakeTime = wakeTime;
-                    });
-                  },
-                ),
-                const SizedBox(height: 24),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    _buildTopTitle("BEDTIME", Icons.king_bed_rounded, _bedTime),
-                    const SizedBox(width: 32),
-                    _buildTopTitle("WAKE UP", Icons.notifications, _wakeTime),
-                  ],
-                ),
-
-                //  const SizedBox(height: 24),
-                // Text(
-                //   "${_sleepTime.hour} hr" + (_sleepTime.minute > 0 ? " ${_sleepTime.minute} min" : ""),
-                //   style: const TextStyle(fontSize: 24, color: Color(0xff000000), fontWeight: FontWeight.w600),
-                // ),
-                //  const SizedBox(height: 10),
-                // Text(
-                //   _sleepTime.hour > threshold
-                //       ? "This schedule does not meet your sleep goal."
-                //       : "This schedule meets your sleep goal.",
-                //   style: TextStyle(color: mutedTextColor, fontWeight: FontWeight.w600),
-                // ),
+                _buildTopTitle("BEDTIME", Icons.king_bed_rounded, _bedTime),
+                _buildTopTitle("WAKE UP", Icons.notifications, _wakeTime),
               ],
             ),
-          ),
-    
+
+            //  const SizedBox(height: 24),
+            // Text(
+            //   "${_sleepTime.hour} hr" + (_sleepTime.minute > 0 ? " ${_sleepTime.minute} min" : ""),
+            //   style: const TextStyle(fontSize: 24, color: Color(0xff000000), fontWeight: FontWeight.w600),
+            // ),
+            //  const SizedBox(height: 10),
+            // Text(
+            //   _sleepTime.hour > threshold
+            //       ? "This schedule does not meet your sleep goal."
+            //       : "This schedule meets your sleep goal.",
+            //   style: TextStyle(color: mutedTextColor, fontWeight: FontWeight.w600),
+            // ),
+          ],
+        ),
+      ),
+
       //),
     );
   }

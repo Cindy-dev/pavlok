@@ -5,14 +5,14 @@ import 'package:flutter/gestures.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter/services.dart';
 
-class Clock extends StatefulWidget {
-  const Clock({Key key}) : super(key: key);
+class Clock2 extends StatefulWidget {
+  const Clock2({Key key}) : super(key: key);
 
   @override
-  State<Clock> createState() => _ClockState();
+  State<Clock2> createState() => _Clock2State();
 }
 
-class _ClockState extends State<Clock> {
+class _Clock2State extends State<Clock2> {
   final Color mutedTextColor = const Color(0xFF9D9EA2);
   final double threshold = 8.0;
 
@@ -22,6 +22,8 @@ class _ClockState extends State<Clock> {
   TimeOfDay get _sleepTime => _bedTime.subtract(_wakeTime);
 
   String _addZeroes(int value) => value.toString().padLeft(2, "0");
+
+  
 
   Widget _buildTopTitle(String title, IconData icon, TimeOfDay time) {
     return Expanded(
@@ -103,11 +105,9 @@ class _ClockState extends State<Clock> {
                 children: [
                   //picture
                   Image.asset('asset/image/Union.png'),
-                  SizedBox(
-                    width: 5,
-                  ),
+                  SizedBox(width: 5,), 
                   Text(
-                    'Under your sleep goal ( 8hrs )',
+                    'Over your sleep goal ( 8hrs )',
                     style: TextStyle(
                         fontFamily: 'Manrope',
                         fontSize: 12,

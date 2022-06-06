@@ -1,12 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:pavlok/screens/clock.dart';
+import 'package:pavlok/screens/clock2.dart';
 
-import 'screen4.dart';
-
-class Screen3 extends StatelessWidget {
-  static const routeName = 'screen3';
-  const Screen3({Key key}) : super(key: key);
-
+class Screen4 extends StatelessWidget {
+  static const routeName = 'screen4';
+  const Screen4({Key key}) : super(key: key);
   buildtimer(String time) {
     return Padding(
       padding: const EdgeInsets.fromLTRB(170, 20, 170, 20),
@@ -47,7 +45,7 @@ class Screen3 extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.start,
         children: [
           GestureDetector(
-               onTap: ()=> Navigator.pop(context), 
+            onTap: () => Navigator.pop(context),
             child: Container(
               padding: EdgeInsets.only(left: 15, top: 30),
               alignment: Alignment.centerLeft,
@@ -70,7 +68,66 @@ class Screen3 extends StatelessWidget {
           ),
           // Spacer(),
 
-          Flexible(child: Clock()),
+          Flexible(child: Clock2()),
+
+          // Padding(
+          //   padding: const EdgeInsets.only(left: 34, right: 32),
+          //   child: Row(
+          //     mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          //     children: [
+          // FittedBox(child: Clock()),
+          //       Row(
+          //         children: [
+          //           Column(
+          //             children: [
+          //               Text(
+          //                 'Bedtime',
+          //                 style: TextStyle(
+          //                     fontFamily: 'Manrope',
+          //                     fontSize: 12,
+          //                     fontWeight: FontWeight.w600,
+          //                     color: Color(0xff939295)),
+          //               ),
+          //               Text(
+          //                 '12:00 AM',
+          //                 style: TextStyle(
+          //                     fontFamily: 'Manrope',
+          //                     fontSize: 20,
+          //                     fontWeight: FontWeight.w600,
+          //                     color: Color(0xff000000)),
+          //               ),
+          //             ],
+          //           ),
+          //         ],
+          //       ),
+          //       Row(
+          //         children: [
+          //           Column(
+          //             children: [
+          //               Text(
+          //                 'Wake up',
+          //                 style: TextStyle(
+          //                     fontFamily: 'Manrope',
+          //                     fontSize: 12,
+          //                     fontWeight: FontWeight.w600,
+          //                     color: Color(0xff939295)),
+          //               ),
+          //               Text(
+          //                 '6:30 AM',
+          //                 style: TextStyle(
+          //                     fontFamily: 'Manrope',
+          //                     fontSize: 20,
+          //                     fontWeight: FontWeight.w600,
+          //                     color: Color(0xff000000)),
+          //               ),
+          //             ],
+          //           ),
+          //         ],
+          //       ),
+          //     ],
+          //   ),
+          // ),
+
           FittedBox(
             fit: BoxFit.fill,
             child: Container(
@@ -215,8 +272,7 @@ class Screen3 extends StatelessWidget {
                           buildtimer('25'),
                           Container(
                             alignment: Alignment.center,
-                            padding:
-                                EdgeInsets.only(left: 127, right: 127),
+                            padding: EdgeInsets.only(left: 127, right: 127),
                             child: Row(
                               mainAxisSize: MainAxisSize.min,
                               mainAxisAlignment: MainAxisAlignment.center,
@@ -281,29 +337,26 @@ class Screen3 extends StatelessWidget {
                   });
             },
           ),
-          GestureDetector(
-               onTap: ()=> Navigator.pushNamed(context, Screen4.routeName),
-            child: Container(
-              margin: EdgeInsets.only(top: 24, bottom: 22),
-              alignment: Alignment.center,
-              child: Text(
-                'Next',
-                style: TextStyle(
-                    fontFamily: 'Manrope',
-                    fontSize: 16,
-                    fontWeight: FontWeight.w600,
-                    color: Color(0xffFFFFFF)),
-              ),
-              // padding: EdgeInsets.only(top: 33),
-              width: 312,
-              height: 56,
-              decoration: BoxDecoration(
-                  gradient: LinearGradient(
-                      begin: Alignment.centerRight,
-                      colors: [Color(0xff338EC), Color(0xff7F5BFF)]),
-                  borderRadius: BorderRadius.circular(16),
-                  border: Border.all(color: Color(0xffFFFFFF), width: 1.5)),
+          Container(
+            margin: EdgeInsets.only(top: 24, bottom: 22),
+            alignment: Alignment.center,
+            child: Text(
+              'Next',
+              style: TextStyle(
+                  fontFamily: 'Manrope',
+                  fontSize: 16,
+                  fontWeight: FontWeight.w600,
+                  color: Color(0xffFFFFFF)),
             ),
+            // padding: EdgeInsets.only(top: 33),
+            width: 312,
+            height: 56,
+            decoration: BoxDecoration(
+                gradient: LinearGradient(
+                    begin: Alignment.centerRight,
+                    colors: [Color(0xff338EC), Color(0xff7F5BFF)]),
+                borderRadius: BorderRadius.circular(16),
+                border: Border.all(color: Color(0xffFFFFFF), width: 1.5)),
           ),
         ],
       ),

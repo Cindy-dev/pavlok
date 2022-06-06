@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:pavlok/screens/screen2.dart';
 
 class Screen1 extends StatelessWidget {
+  static const routeName = 'screen1';
   const Screen1({Key key}) : super(key: key);
 
   @override
@@ -8,7 +10,11 @@ class Screen1 extends StatelessWidget {
     return Scaffold(
       body: Column(
         children: [
-          Spacer(),
+          Padding(
+            padding: const EdgeInsets.only(top:55, bottom: 30),
+            child: Image.asset('asset/image/progress bar.png'),
+          ), 
+          //Spacer(),
           Container(
             alignment: Alignment.center,
             child: Text(
@@ -33,6 +39,10 @@ class Screen1 extends StatelessWidget {
             ),
           ),
           //tabbar
+          Padding(
+            padding: const EdgeInsets.fromLTRB(20, 20, 20, 30),
+            child: Image.asset('asset/image/Tabs.png'),
+          ),
           Container(
             margin: EdgeInsets.only(top: 10),
             alignment: Alignment.center,
@@ -146,26 +156,30 @@ class Screen1 extends StatelessWidget {
                 borderRadius: BorderRadius.circular(16),
                 border: Border.all(color: Color(0xffFFFFFF), width: 1.5)),
           ),
-          Container(
-            margin: EdgeInsets.only(top: 24),
-            alignment: Alignment.center,
-            child: Text(
-              'Next',
-              style: TextStyle(
-                  fontFamily: 'Manrope',
-                  fontSize: 16,
-                  fontWeight: FontWeight.w600,
-                  color: Color(0xffFFFFFF)),
+          Spacer(),
+          GestureDetector(
+            onTap: ()=> Navigator.pushNamed(context, Screen2.routeName),
+            child: Container(
+              margin: EdgeInsets.only(top: 24),
+              alignment: Alignment.center,
+              child: Text(
+                'Next',
+                style: TextStyle(
+                    fontFamily: 'Manrope',
+                    fontSize: 16,
+                    fontWeight: FontWeight.w600,
+                    color: Color(0xffFFFFFF)),
+              ),
+              // padding: EdgeInsets.only(top: 33),
+              width: 312,
+              height: 56,
+              decoration: BoxDecoration(
+                  gradient: LinearGradient(
+                      begin: Alignment.centerRight,
+                      colors: [Color(0xff338EC), Color(0xff7F5BFF)]),
+                  borderRadius: BorderRadius.circular(16),
+                  border: Border.all(color: Color(0xffFFFFFF), width: 1.5)),
             ),
-            // padding: EdgeInsets.only(top: 33),
-            width: 312,
-            height: 56,
-            decoration: BoxDecoration(
-                gradient: LinearGradient(
-                    begin: Alignment.centerRight,
-                    colors: [Color(0xff338EC), Color(0xff7F5BFF)]),
-                borderRadius: BorderRadius.circular(16),
-                border: Border.all(color: Color(0xffFFFFFF), width: 1.5)),
           ),
           Spacer(),
         ],
